@@ -71,7 +71,7 @@
 #include <algorithm>
 #include <map>
 #include <cstdlib>
-#include <ctime>
+#include <random>
 #include <x86_64-linux-gnu/curl/curl.h>
 #include <nlohmann/json.hpp>
 
@@ -99,8 +99,6 @@ int main()
 	int arr[7] = {0,};
 	bool IsChoose[46] = {false,};
 	int recent, idx, tmp;
-
-	srand(time(NULL));
 
 	// 저장된 데이터를 가져온 후, 최신 데이터인지 검사
 	recent = GETRecentDRWTNO();
@@ -136,7 +134,7 @@ int main()
 	it = m.begin();
 	while(1)
 	{
-		if(idx > 3)
+		if(idx >= 3)
 			break;
 
 		if(!IsChoose[it->second])
@@ -154,7 +152,7 @@ int main()
 	it--;
 	while(1)
 	{
-		if(idx > 7)
+		if(idx >= 6)
 			break;
 
 		if(!IsChoose[it->second])
@@ -170,7 +168,10 @@ int main()
 	// 보너스 번호는 아무거나 추천
 	while(1)
 	{
-		tmp = rand() % 46;
+		std::random_device rd; 
+    	std::mt19937 mt(rd()); 
+    	std::uniform_int_distribution<int> dist(1, 45); 
+    	tmp = dist(mt);
 
 		if(tmp && !IsChoose[tmp])
 		{
