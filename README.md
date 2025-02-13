@@ -21,7 +21,7 @@
    -     apt install libcurl4-openssl-dev -y
    
    - JSON 라이브러리 설치 명령어(nlohmann/json.hpp)
-   -     apt install nlohmann-json3-dev
+   -     apt install nlohmann-json3-dev -y
    
    - g++ 컴파일 명령어
    -     g++ main.cpp -o Lotto -I/usr/include/x86_64-linux-gnu -lcurl
